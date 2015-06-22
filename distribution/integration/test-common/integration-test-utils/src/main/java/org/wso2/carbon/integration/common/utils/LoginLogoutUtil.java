@@ -26,12 +26,13 @@ import org.apache.commons.httpclient.auth.AuthenticationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.authenticator.stub.AuthenticationAdminStub;
+import org.wso2.carbon.authenticator.stub.LoginAuthenticationExceptionException;
 import org.wso2.carbon.authenticator.stub.LogoutAuthenticationExceptionException;
 import org.wso2.carbon.automation.engine.context.AutomationContext;
 import org.wso2.carbon.core.commons.stub.loggeduserinfo.LoggedUserInfoAdminStub;
 import org.wso2.carbon.utils.CarbonUtils;
-
 import javax.xml.xpath.XPathExpressionException;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -54,7 +55,7 @@ public final class LoginLogoutUtil {
 
 
     public String login(String username, char[] password, String backendURL)
-            throws Exception {
+            throws MalformedURLException, RemoteException, LoginAuthenticationExceptionException {
 
         String authenticationServiceURL = backendURL + "AuthenticationAdmin";
         AuthenticationAdminStub authenticationAdminStub = new AuthenticationAdminStub(authenticationServiceURL);

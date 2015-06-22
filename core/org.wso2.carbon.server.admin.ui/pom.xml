@@ -20,8 +20,8 @@
     <parent>
         <groupId>org.wso2.carbon</groupId>
         <artifactId>carbon-kernel</artifactId>
-        <version>4.4.0-SNAPSHOT</version>
-	<relativePath>../pom.xml</relativePath>
+        <version>4.4.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -34,17 +34,15 @@
     <url>http://wso2.org</url>
 
     <dependencies>
-         <dependency>
+        <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.server.admin.common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
-            <version>${project.version}</version>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.server.admin.stub</artifactId>
         </dependency>
@@ -55,7 +53,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -67,7 +64,7 @@
                         </Export-Package>
                         <Import-Package>
                             !org.wso2.carbon.server.admin.ui.i18n,
-			                org.wso2.carbon.admin.stub.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.admin.stub.*;version="${carbon.kernel.imp.pkg.version}",
                             javax.servlet; version="${imp.pkg.version.javax.servlet}",
                             javax.servlet.http; version="${imp.pkg.version.javax.servlet}",
                             *;resolution:=optional

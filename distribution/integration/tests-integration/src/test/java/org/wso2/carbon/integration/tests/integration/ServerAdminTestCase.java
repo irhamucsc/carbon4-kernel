@@ -17,7 +17,6 @@
 */
 package org.wso2.carbon.integration.tests.integration;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.automation.engine.FrameworkConstants;
@@ -26,7 +25,7 @@ import org.wso2.carbon.integration.common.utils.CarbonIntegrationBaseTest;
 import org.wso2.carbon.integration.common.utils.LoginLogoutUtil;
 import org.wso2.carbon.server.admin.ui.ServerAdminClient;
 
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.*;
 
 /**
  * Test case which tests ServerAdmin functionality
@@ -34,21 +33,26 @@ import static org.testng.Assert.assertNotNull;
 public class ServerAdminTestCase extends CarbonIntegrationBaseTest {
 
     private LoginLogoutUtil util = new LoginLogoutUtil();
+    private String host;
+    private String userName;
+    private String password;
+    private String backEndURL;
 
     @BeforeClass(alwaysRun = true)
     public void initTests() throws Exception {
         super.init(TestUserMode.SUPER_TENANT_ADMIN);
+        host = automationContext.getDefaultInstance().getHosts().get("default");
+        userName = automationContext.getContextTenant().getContextUser().getUserName();
+        password = automationContext.getContextTenant().getContextUser().getPassword();
+        backEndURL = contextUrls.getBackEndUrl();
     }
 
     @Test(groups = {"carbon.core"}, threadPoolSize = 10, invocationCount = 10,
             description = "Test server information retrieval from the ServerAdmin service")
     public void testRetrieveServerInfo() throws Exception {
         ServerAdminClient serverAdmin = new ServerAdminClient
-                ("https://" + automationContext.getDefaultInstance().getHosts().get("default") +
-                        ":" + FrameworkConstants.SERVER_DEFAULT_HTTPS_PORT +
-                        "/services/ServerAdmin/",
-                        automationContext.getContextTenant().getContextUser().getUserName(),
-                        automationContext.getContextTenant().getContextUser().getPassword());
+                ("https://" + host + ":" + FrameworkConstants.SERVER_DEFAULT_HTTPS_PORT + "/services/ServerAdmin/",
+                        userName, password);
         assertNotNull(serverAdmin.getServerData(), "Carbon server data cannot be null");
     }
 
@@ -57,13 +61,10 @@ public class ServerAdminTestCase extends CarbonIntegrationBaseTest {
 
         // This should throw an exception
         try {
-            util.login(
-                    automationContext.getContextTenant().getContextUser().getUserName(),
-                    automationContext.getContextTenant().getContextUser().getPassword().toCharArray(),
-                    contextUrls.getBackEndUrl() + "invalid");
-            Assert.fail("Should not be able to login");
+            util.login(userName, password.toCharArray(), backEndURL + "invalid");
+            fail("Should not be able to login");
         } catch (Exception e) {
-            Assert.assertTrue(true);
+            assertTrue(true);
         }
     }
 }

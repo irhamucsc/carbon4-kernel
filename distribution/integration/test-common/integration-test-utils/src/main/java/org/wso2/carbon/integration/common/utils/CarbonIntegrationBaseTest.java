@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.xml.xpath.XPathExpressionException;
+
 public abstract class CarbonIntegrationBaseTest {
 
     protected ContextUrls contextUrls = new ContextUrls();
@@ -40,12 +42,12 @@ public abstract class CarbonIntegrationBaseTest {
     protected TestUserMode userMode;
     private static final Log log = LogFactory.getLog(CarbonIntegrationBaseTest.class);
 
-    protected void init() throws Exception {
+    protected void init() throws XPathExpressionException {
         userMode = TestUserMode.SUPER_TENANT_ADMIN;
         init(userMode);
     }
 
-    protected void init(TestUserMode userMode) throws Exception {
+    protected void init(TestUserMode userMode) throws XPathExpressionException {
         automationContext = new AutomationContext("CARBON", userMode);
         contextUrls = automationContext.getContextUrls();
 

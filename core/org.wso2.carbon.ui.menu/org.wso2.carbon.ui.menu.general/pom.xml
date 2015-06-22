@@ -20,8 +20,8 @@
     <parent>
         <groupId>org.wso2.carbon</groupId>
         <artifactId>carbon-ui-menu-parent</artifactId>
-        <version>4.4.0-SNAPSHOT</version>
-	<relativePath>../pom.xml</relativePath>
+        <version>4.4.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -35,7 +35,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -44,12 +43,11 @@
                         <Export-Package>*</Export-Package>
                         <Import-Package />
                         <Bundle-ClassPath>.</Bundle-ClassPath>
-                        <!--<Fragment-Host>org.wso2.carbon.ui</Fragment-Host>-->
                         <Carbon-Component>UIBundle</Carbon-Component>
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

@@ -4,12 +4,11 @@
     <parent>
         <groupId>org.wso2.carbon</groupId>
         <artifactId>server-role-manager</artifactId>
-        <version>4.4.0-SNAPSHOT</version>
-	<relativePath>../pom.xml</relativePath>
+        <version>4.4.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.carbon</groupId>
     <artifactId>org.wso2.carbon.roles.mgt.ui</artifactId>
     <packaging>bundle</packaging>
 
@@ -22,7 +21,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                
+
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -33,7 +32,7 @@
                             org.wso2.carbon.roles.mgt.ui.*
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.roles.mgt.stub.*;version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.roles.mgt.stub.*;version="${carbon.kernel.imp.pkg.version}",
                             javax.servlet; version="${imp.pkg.version.javax.servlet}",
                             javax.servlet.http; version="${imp.pkg.version.javax.servlet}",
                             *;resolution:=optional
@@ -57,7 +56,6 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.ui</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

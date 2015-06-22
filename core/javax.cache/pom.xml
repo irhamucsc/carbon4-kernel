@@ -13,14 +13,13 @@
     <parent>
         <groupId>org.wso2.carbon</groupId>
         <artifactId>carbon-kernel</artifactId>
-        <version>4.4.0-SNAPSHOT</version>
-	    <relativePath>../pom.xml</relativePath>
+        <version>4.4.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>javax.cache.wso2</artifactId>
     <packaging>bundle</packaging>
-    <version>4.4.0-SNAPSHOT</version>
     <name>WSO2 Carbon - JSR 107 API</name>
     <description>OSGi Bundle for JCache API</description>
     <url>http://wso2.org</url>
@@ -29,7 +28,6 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -43,17 +41,14 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>4.4.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.base</artifactId>
-            <version>4.4.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
-            <version>4.4.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -66,7 +61,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
